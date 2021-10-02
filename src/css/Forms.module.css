@@ -2,8 +2,6 @@
   font-family: "Montserrat";
 }
 
-
-
 .formContainer {
   width: 400px;
   min-width: 400px;
@@ -64,5 +62,5 @@ textarea {
   padding: 10px;
   font-size: 14px;
   outline: none;
-  resize: none;;
+  resize: none;
 }
