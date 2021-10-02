@@ -1,31 +1,33 @@
-import { BrowserRouter as Router, Switch, Route} from "react-router-dom";
+import "./css/App.css";
+
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Navbar from "./components/Navbar";
+import Login from "./components/Login";
+import Register from "./components/Register";
+import NewPost from "./components/NewPost";
 import Dashboard from "./components/Dashboard";
-import LoginForm from "./components/LoginForm";
-import SignupForm from "./components/SigupForm";
-import NewPostForm from "./components/NewPostForm";
 
 function App(): JSX.Element {
   return (
-    <Router>
-      <Navbar />
-      <Switch>
-        <Route exact path="/dashboard">
-          <Dashboard />
-        </Route>
-        <Route path="/new-post">
-          <NewPostForm />
-        </Route>
-        <Route path="/login">
-          <LoginForm />
-        </Route>
-        <Route path="/signup">
-          <SignupForm />
-        </Route>
-
-
-      </Switch>
-    </Router>
+    <div className="app-container">
+      <Router>
+        <Navbar />
+        <Switch>
+          <Route exact path="/">
+            <Dashboard />
+          </Route>
+          <Route path="/new-post">
+            <NewPost />
+          </Route>
+          <Route path="/login">
+            <Login />
+          </Route>
+          <Route path="/register">
+            <Register />
+          </Route>
+        </Switch>
+      </Router>
+    </div>
   );
 }
 
