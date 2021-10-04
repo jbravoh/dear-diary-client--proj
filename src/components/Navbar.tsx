@@ -1,11 +1,21 @@
 import { Link } from "react-router-dom";
 import "../css/Navbar.css";
 
-export default function Navbar(): JSX.Element {
+interface NavbarProps {
+  setAuth: (boolean: boolean) => void;
+}
+
+export default function Navbar({ setAuth }: NavbarProps): JSX.Element {
+  const logout = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    e.preventDefault();
+    localStorage.removeItem("token");
+    setAuth(false);
+  };
+
   return (
     <nav className="navbar-items">
       <h1 className="navbar-logo ">
-        <Link to="/" className="link">
+        <Link to="/dashboard" className="link">
           Dear Diary
         </Link>
       </h1>
@@ -25,6 +35,15 @@ export default function Navbar(): JSX.Element {
           <li>
             <Link to="/register" className="nav-link">
               Register
+            </Link>
+          </li>
+          <li>
+            <Link
+              to="/dashboard"
+              className="nav-link"
+              onClick={(e) => logout(e)}
+            >
+              Logout
             </Link>
           </li>
         </ul>
