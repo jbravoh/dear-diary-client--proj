@@ -22,7 +22,7 @@ export default function Dashboard({ setAuth }: DashboardProps): JSX.Element {
 
   useEffect(() => {
     getName();
-  });
+  }, []);
 
   return (
     <>
