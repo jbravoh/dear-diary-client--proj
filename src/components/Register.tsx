@@ -1,9 +1,7 @@
 import style from "../css/Forms.module.css";
 import React, { useState } from "react";
-import { Link} from "react-router-dom";
+import { Link } from "react-router-dom";
 import { IUser } from "../interfaces/IUser";
-import { truncate } from "fs";
-
 
 interface RegisterProps {
   setAuth: (boolean: boolean) => void;
