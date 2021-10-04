@@ -40,7 +40,7 @@ function App(): JSX.Element {
   return (
     <div className="app-container">
       <Router>
-        <Navbar setAuth={setAuth} />
+        <Navbar setAuth={setAuth} isAuthenticated={isAuthenticated} />
         <Switch>
           <Route exact path="/dashboard">
             {isAuthenticated ? (
@@ -60,11 +60,11 @@ function App(): JSX.Element {
             {!isAuthenticated ? (
               <Register setAuth={setAuth} />
             ) : (
-              <Redirect to="/login" />
+              <Redirect to="/dashboard" />
             )}
           </Route>
           <Route path="/new-post">
-            <NewPost />
+            {isAuthenticated ? <NewPost /> : <Redirect to="/login" />}
           </Route>
         </Switch>
       </Router>
