@@ -1,7 +1,9 @@
 import style from "../css/Forms.module.css";
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link} from "react-router-dom";
 import { IUser } from "../interfaces/IUser";
+import { truncate } from "fs";
+
 
 interface RegisterProps {
   setAuth: (boolean: boolean) => void;
@@ -30,16 +32,10 @@ export default function Register({ setAuth }: RegisterProps): JSX.Element {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(body),
       });
-      console.log("hey")
       const parseRes = await response.json();
-      console.log(parseRes) // not seeing it in the console
 
-
-
-      localStorage.setItem("token", parseRes.token)
-      setAuth(true)
-
-
+      localStorage.setItem("token", parseRes.token);
+      setAuth(true);
     } catch (error) {
       console.error(error);
     }
@@ -48,7 +44,7 @@ export default function Register({ setAuth }: RegisterProps): JSX.Element {
   return (
     <div className={style.formContainer}>
       <h1 className="title">Register</h1>
-      {/* <form onSubmit={onSubmitForm}> */}
+      <form>
         <label className={style.label}>Username</label>
         <input
           type="text"
@@ -73,12 +69,17 @@ export default function Register({ setAuth }: RegisterProps): JSX.Element {
           value={password}
           onChange={(e) => onChange(e)}
         ></input>
-        <button className={style.button} type="submit" onClick={(e: React.MouseEvent<HTMLButtonElement>) => {
-          setAuth(true)
-          onSubmitForm(e) }}>
+        <button
+          className={style.button}
+          type="submit"
+          onClick={(e: React.MouseEvent<HTMLButtonElement>) => {
+            setAuth(true);
+            onSubmitForm(e);
+          }}
+        >
           Create Account
         </button>
-      {/* </form> */}
+      </form>
       <p className={style.formSentence}>
         Already have an account?{" "}
         <Link to="/login" className={style.formLink}>

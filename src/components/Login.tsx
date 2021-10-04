@@ -30,11 +30,8 @@ export default function Login({ setAuth }: LoginProps): JSX.Element {
       });
 
       const parseRes = await response.json();
-      console.log(parseRes) 
-      localStorage.setItem("token", parseRes.token)
-      setAuth(true)
-
-
+      localStorage.setItem("token", parseRes.token);
+      setAuth(true);
     } catch (error) {
       console.error(error);
     }
@@ -42,8 +39,8 @@ export default function Login({ setAuth }: LoginProps): JSX.Element {
 
   return (
     <>
-      <h1 className="title">Lo gin</h1>
-      <form className={style.formContainer} >
+      <h1 className="title">Login</h1>
+      <form className={style.formContainer}>
         <label className={style.label}>Email</label>
         <input
           type="text"
@@ -54,20 +51,25 @@ export default function Login({ setAuth }: LoginProps): JSX.Element {
         ></input>
         <label className={style.label}>Password</label>
         <input
-          type="text"
+          type="password"
           name="password"
           placeholder="Enter password"
           value={password}
           onChange={(e) => onChange(e)}
         ></input>
-        <button className={style.button} type="submit" onClick={(e: React.MouseEvent<HTMLButtonElement>) => {
-          setAuth(true)
-          onSubmitForm(e) }}>
+        <button
+          className={style.button}
+          type="submit"
+          onClick={(e: React.MouseEvent<HTMLButtonElement>) => {
+            setAuth(true);
+            onSubmitForm(e);
+          }}
+        >
           Submit
         </button>
       </form>
       <p className={style.formSentence}>
-        Already have an account?{" "}
+        Don't have an account?{" "}
         <Link to="/register" className={style.formLink}>
           Join Now
         </Link>
