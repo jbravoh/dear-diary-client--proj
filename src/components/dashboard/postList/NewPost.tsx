@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import style from "../css/Forms.module.css";
-import { IPost } from "../interfaces/IPost";
+import style from "../../../css/Forms.module.css";
+import { IPost } from "../../../interfaces/IPost";
 
 export default function NewPost(): JSX.Element {
   const [inputs, setInputs] = useState<IPost>({
