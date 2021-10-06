@@ -11,9 +11,12 @@ import Login from "./components/Login";
 import Register from "./components/Register";
 import NewPost from "./components/NewPost";
 import Dashboard from "./components/Dashboard";
+import SelectedPost from "./components/SelectedPost";
+import { IPost } from "./interfaces/IPost";
 
 function App(): JSX.Element {
   const [isAuthenticated, setIsAuthenticated] = useState<boolean>(false);
+  const [posts, setPosts] = useState<IPost[]>([]);
 
   const setAuth = (boolean: boolean) => {
     setIsAuthenticated(boolean);
@@ -43,7 +46,11 @@ function App(): JSX.Element {
         <Navbar setAuth={setAuth} isAuthenticated={isAuthenticated} />
         <Switch>
           <Route exact path="/dashboard">
-            {isAuthenticated ? <Dashboard /> : <Redirect to="/login" />}
+            {isAuthenticated ? (
+              <Dashboard posts={posts} setPosts={setPosts} />
+            ) : (
+              <Redirect to="/login" />
+            )}
           </Route>
           <Route path="/login">
             {!isAuthenticated ? (
@@ -61,6 +68,13 @@ function App(): JSX.Element {
           </Route>
           <Route path="/new-post">
             {isAuthenticated ? <NewPost /> : <Redirect to="/login" />}
+          </Route>
+          <Route path="/selected-post/:postId">
+            {isAuthenticated ? (
+              <SelectedPost posts={posts} />
+            ) : (
+              <Redirect to="/login" />
+            )}
           </Route>
         </Switch>
       </Router>

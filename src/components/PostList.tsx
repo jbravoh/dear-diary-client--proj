@@ -1,17 +1,22 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import { IPost } from "../interfaces/IPost";
 import style from "../css/PostList.module.css";
+import { Link } from "react-router-dom";
 
 interface PostListProps {
   allPosts: IPost[];
+  posts: IPost[];
+  setPosts: React.Dispatch<React.SetStateAction<IPost[]>>;
 }
 
-export default function PostList({ allPosts }: PostListProps): JSX.Element {
-  const [posts, setPosts] = useState<IPost[]>([]);
-
+export default function PostList({
+  allPosts,
+  posts,
+  setPosts,
+}: PostListProps): JSX.Element {
   useEffect(() => {
     setPosts(allPosts);
-  }, [allPosts]);
+  }, [allPosts, setPosts]);
 
   return (
     <div>
@@ -20,8 +25,13 @@ export default function PostList({ allPosts }: PostListProps): JSX.Element {
           <div key={post.post_id} className={style.postContainer}>
             <h1 className={style.title}> {post.title}</h1>
             <p>{post.content} </p>
-            <div>
-              <button className={style.button}>View</button>
+            <div key={post.post_id}>
+              <Link
+                to={`/selected-post/${post.post_id}`}
+                className={style.buttonLink}
+              >
+                <button className={style.button}>View</button>
+              </Link>
             </div>
           </div>
         ))}
