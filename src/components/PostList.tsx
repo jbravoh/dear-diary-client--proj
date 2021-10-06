@@ -13,7 +13,6 @@ export default function PostList({ allPosts }: PostListProps): JSX.Element {
     setPosts(allPosts);
   }, [allPosts]);
 
-
   return (
     <div>
       <div className={style.container}>
@@ -25,7 +24,6 @@ export default function PostList({ allPosts }: PostListProps): JSX.Element {
               <button className={style.button}>View</button>
             </div>
           </div>
-
         ))}
       </div>
     </div>
