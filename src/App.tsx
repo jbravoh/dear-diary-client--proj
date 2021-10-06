@@ -21,7 +21,7 @@ function App(): JSX.Element {
 
   const isAuth = async () => {
     try {
-      const response = await fetch("http://localhost:5000/auth/is-verify", {
+      const response = await fetch("http://localhost:5000/auth/verify", {
         method: "GET",
         headers: { token: localStorage.token },
       });
@@ -43,11 +43,7 @@ function App(): JSX.Element {
         <Navbar setAuth={setAuth} isAuthenticated={isAuthenticated} />
         <Switch>
           <Route exact path="/dashboard">
-            {isAuthenticated ? (
-              <Dashboard setAuth={setAuth} />
-            ) : (
-              <Redirect to="/login" />
-            )}
+            {isAuthenticated ? <Dashboard /> : <Redirect to="/login" />}
           </Route>
           <Route path="/login">
             {!isAuthenticated ? (
