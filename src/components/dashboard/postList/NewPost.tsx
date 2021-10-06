@@ -21,34 +21,28 @@ export default function NewPost(): JSX.Element {
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     try {
+      const myHeaders = new Headers();
 
-      const myHeaders = new Headers(); 
-
-      myHeaders.append("Content-Type", "application/json")
-      myHeaders.append("token", localStorage.token)
+      myHeaders.append("Content-Type", "application/json");
+      myHeaders.append("token", localStorage.token);
 
       const body = { title, content };
       const response = await fetch("http://localhost:5000/dashboard/posts", {
         method: "POST",
         headers: myHeaders,
         body: JSON.stringify(body),
-       
       });
 
       const parseRes = await response.json();
-      console.log(parseRes)
+      console.log(parseRes);
       setInputs({
         title: "",
         content: "",
-      })
+      });
     } catch (error) {
       console.error(error);
     }
   };
-
-
-  
-
 
   return (
     <>
