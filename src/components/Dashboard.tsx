@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from "react";
+import PostList from "./PostList";
+import { IPost } from "../interfaces/IPost";
 
-interface DashboardProps {
-  setAuth: (boolean: boolean) => void;
-}
-export default function Dashboard({ setAuth }: DashboardProps): JSX.Element {
+export default function Dashboard(): JSX.Element {
   const [name, setName] = useState<string>("");
+  const [allPosts, setAllPosts] = useState<IPost[]>([]);
 
   const getName = async () => {
     try {
@@ -14,7 +14,9 @@ export default function Dashboard({ setAuth }: DashboardProps): JSX.Element {
       });
 
       const parseRes = await response.json();
-      setName(parseRes.username);
+      console.log(parseRes);
+      setName(parseRes[0].username);
+      setAllPosts(parseRes);
     } catch (error) {
       console.error(error);
     }
@@ -27,6 +29,7 @@ export default function Dashboard({ setAuth }: DashboardProps): JSX.Element {
   return (
     <>
       <h1 className="title">Welcome {name}</h1>
+      <PostList allPosts={allPosts} />
     </>
   );
 }
