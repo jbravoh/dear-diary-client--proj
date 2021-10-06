@@ -32,6 +32,10 @@ export default function Login({ setAuth }: LoginProps): JSX.Element {
       const parseRes = await response.json();
       localStorage.setItem("token", parseRes.token);
       setAuth(true);
+      setInputs({
+        email: "",
+        password: "",
+      });
     } catch (error) {
       console.error(error);
     }

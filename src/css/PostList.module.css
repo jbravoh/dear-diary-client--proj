@@ -1,0 +1,37 @@
+.container {
+  margin: 0 10px;
+  display: grid;
+  grid-template-columns: repeat(2, auto);
+  grid-gap: 30px;
+  justify-content: center;
+}
+.postContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background: white;
+  width: 400px;
+  margin: 10px auto;
+  padding: 15px;
+  border-radius: 10px;
+  box-shadow: 0 10px 6px -6px rgb(153, 153, 153);
+  padding: 5px;
+}
+
+.title {
+  font-size: 24px;
+}
+
+.button {
+  margin: 10px auto;
+  border-radius: 8px;
+  font-weight: bold;
+  font-size: 15px;
+  background-color: #2f5d62;
+  color: white;
+  height: 30px;
+  width: 70px;
+  display: block;
+  border-style: none;
+  cursor: pointer;
+}
