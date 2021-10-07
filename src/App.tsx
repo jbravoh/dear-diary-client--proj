@@ -80,7 +80,7 @@ function App(): JSX.Element {
           </Route>
           <Route path="/selected-post/:postId">
             {isAuthenticated ? (
-              <SelectedPost posts={posts} />
+              <SelectedPost posts={posts} setPosts={setPosts} />
             ) : (
               <Redirect to="/login" />
             )}
