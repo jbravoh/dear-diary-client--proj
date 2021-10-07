@@ -32,6 +32,7 @@
   margin-right: auto;
   border-style: none;
   cursor: pointer;
+  text-decoration: none;
 }
 
 .editButton {
