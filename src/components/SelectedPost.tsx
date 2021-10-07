@@ -1,6 +1,7 @@
 import { IPost } from "../interfaces/IPost";
 import { useParams } from "react-router-dom";
 import style from "../css/SelectedPost.module.css";
+import { Link } from "react-router-dom";
 
 interface SelectedPostProps {
   posts: IPost[];
@@ -28,7 +29,9 @@ export default function SelectedPost({
         <div className={style.container}>
           <h1 className="title">{post.title}</h1>
           <div className={style.buttonContainer}>
-            <button className={style.editButton}>Edit</button>
+            <Link to={`/edit-post/${post.post_id}`}>
+              <button className={style.editButton}>Edit</button>
+            </Link>
             <button className={style.deleteButton}>Delete</button>
           </div>
           <div className={style.paragraphContainer}>

@@ -1,5 +1,5 @@
 import "./css/App.css";
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import {
   BrowserRouter as Router,
   Switch,
@@ -13,10 +13,15 @@ import NewPost from "./components/NewPost";
 import Dashboard from "./components/Dashboard";
 import SelectedPost from "./components/SelectedPost";
 import { IPost } from "./interfaces/IPost";
+import EditPost from "./components/EditPost";
 
 function App(): JSX.Element {
   const [isAuthenticated, setIsAuthenticated] = useState<boolean>(false);
   const [posts, setPosts] = useState<IPost[]>([]);
+  const [inputs, setInputs] = useState<IPost>({
+    title: "",
+    content: "",
+  });
 
   const setAuth = (boolean: boolean) => {
     setIsAuthenticated(boolean);
@@ -67,11 +72,22 @@ function App(): JSX.Element {
             )}
           </Route>
           <Route path="/new-post">
-            {isAuthenticated ? <NewPost /> : <Redirect to="/login" />}
+            {isAuthenticated ? (
+              <NewPost inputs={inputs} setInputs={setInputs} />
+            ) : (
+              <Redirect to="/login" />
+            )}
           </Route>
           <Route path="/selected-post/:postId">
             {isAuthenticated ? (
               <SelectedPost posts={posts} />
+            ) : (
+              <Redirect to="/login" />
+            )}
+          </Route>
+          <Route path="/edit-post/:postId">
+            {isAuthenticated ? (
+              <EditPost posts={posts} inputs={inputs} setInputs={setInputs} />
             ) : (
               <Redirect to="/login" />
             )}

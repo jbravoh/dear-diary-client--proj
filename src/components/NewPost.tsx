@@ -1,22 +1,16 @@
-import React, { useState } from "react";
 import style from "../css/Forms.module.css";
 import { IPost } from "../interfaces/IPost";
 
-export default function NewPost(): JSX.Element {
-  const [inputs, setInputs] = useState<IPost>({
-    title: "",
-    content: "",
-  });
+interface NewPostProps {
+  inputs: IPost;
+  setInputs: React.Dispatch<React.SetStateAction<IPost>>;
+}
 
+export default function NewPost({
+  inputs,
+  setInputs,
+}: NewPostProps): JSX.Element {
   const { title, content } = inputs;
-
-  const handleInput = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setInputs({ ...inputs, [e.target.name]: e.target.value });
-  };
-
-  const handleTextarea = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
-    setInputs({ ...inputs, [e.target.name]: e.target.value });
-  };
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -54,14 +48,18 @@ export default function NewPost(): JSX.Element {
           name="title"
           placeholder="Enter title"
           value={title}
-          onChange={(e) => handleInput(e)}
+          onChange={(e) =>
+            setInputs({ ...inputs, [e.target.name]: e.target.value })
+          }
         />
         <label className={style.label}>Content</label>
         <textarea
           name="content"
           placeholder="Let it all out"
           value={content}
-          onChange={(e) => handleTextarea(e)}
+          onChange={(e) =>
+            setInputs({ ...inputs, [e.target.name]: e.target.value })
+          }
         />
         <button className={style.button}>Submit</button>
       </form>
