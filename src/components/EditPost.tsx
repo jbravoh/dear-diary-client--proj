@@ -2,6 +2,8 @@ import { IPost } from "../interfaces/IPost";
 import { useParams } from "react-router-dom";
 import style from "../css/Forms.module.css";
 import { useEffect } from "react";
+import { findPost } from "../utils/findPost";
+import { useHistory } from "react-router-dom";
 
 interface EditPostProps {
   posts: IPost[];
@@ -16,29 +18,10 @@ export default function EditPost({
 }: EditPostProps): JSX.Element {
   const { postId } = useParams<{ postId: string | undefined }>();
 
-  function findPost(posts: IPost[], targetId: string | undefined) {
-    for (const post of posts) {
-      if (post.post_id === Number(targetId)) {
-        return post;
-      }
-    }
-    return null;
-  }
-
   const post = findPost(posts, postId);
 
   const { title, content } = inputs;
-
-  const handleInput = (e: React.ChangeEvent<HTMLInputElement>) => {
-    console.log("test");
-    console.log(e.target.name);
-    console.log(e.target.value);
-    setInputs({ ...inputs, [e.target.name]: e.target.value });
-  };
-
-  const handleTextarea = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
-    setInputs({ ...inputs, [e.target.name]: e.target.value });
-  };
+  const history = useHistory();
 
   const editPost = async (id: number | undefined) => {
     try {
@@ -54,6 +37,8 @@ export default function EditPost({
         headers: myHeaders,
         body: JSON.stringify(body),
       });
+
+      history.push("/Dashboard");
     } catch (error) {
       console.error(error);
     }
@@ -79,13 +64,17 @@ export default function EditPost({
               type="text"
               name="title"
               value={title}
-              onChange={(e) => handleInput(e)}
+              onChange={(e) =>
+                setInputs({ ...inputs, [e.target.name]: e.target.value })
+              }
             />
             <label className={style.label}>Content</label>
             <textarea
               name="content"
               value={content}
-              onChange={(e) => handleTextarea(e)}
+              onChange={(e) =>
+                setInputs({ ...inputs, [e.target.name]: e.target.value })
+              }
             />
 
             {post !== undefined && (
@@ -93,7 +82,7 @@ export default function EditPost({
                 className={style.button}
                 onClick={() => editPost(post.post_id)}
               >
-                Submit
+                Submit Edit
               </button>
             )}
           </form>
