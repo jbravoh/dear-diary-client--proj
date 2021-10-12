@@ -31,7 +31,6 @@ export default function Dashboard({
 
   useEffect(() => {
     getName();
-    // return () => setName("");
   }, []);
 
   return (
