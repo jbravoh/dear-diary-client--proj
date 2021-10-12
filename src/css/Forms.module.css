@@ -63,9 +63,9 @@ input {
 
 textarea {
   width: 800px;
-  min-width: 400px;
+  min-width: 300px;
   margin: 10px auto;
-  min-height: 400px;
+  min-height: 250px;
   padding: 10px;
   font-size: 14px;
   outline: none;
