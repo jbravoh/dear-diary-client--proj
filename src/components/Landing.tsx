@@ -1,6 +1,17 @@
 import style from "../css/Landing.module.css";
+import { useHistory } from "react-router-dom";
 
 export default function Landing(): JSX.Element {
+  const history = useHistory();
+
+  const handleLoginButton = () => {
+    history.push("/login");
+  };
+
+  const handleRegisterButton = () => {
+    history.push("/register");
+  };
+
   return (
     <div className={style.bodyContainer}>
       <div className={style.container}>
@@ -10,8 +21,12 @@ export default function Landing(): JSX.Element {
         </h2>
       </div>
       <div className={style.buttonContainer}>
-        <button className={style.button}>Login</button>
-        <button className={style.button}>Register</button>
+        <button className={style.button} onClick={handleLoginButton}>
+          Login
+        </button>
+        <button className={style.button} onClick={handleRegisterButton}>
+          Register
+        </button>
       </div>
     </div>
   );
