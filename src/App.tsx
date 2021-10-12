@@ -14,6 +14,7 @@ import Dashboard from "./components/Dashboard";
 import SelectedPost from "./components/SelectedPost";
 import { IPost } from "./interfaces/IPost";
 import EditPost from "./components/EditPost";
+import Landing from "./components/Landing";
 
 function App(): JSX.Element {
   const [isAuthenticated, setIsAuthenticated] = useState<boolean>(false);
@@ -50,7 +51,10 @@ function App(): JSX.Element {
       <Router>
         <Navbar setAuth={setAuth} isAuthenticated={isAuthenticated} />
         <Switch>
-          <Route exact path="/dashboard">
+          <Route exact path="/">
+            {!isAuthenticated ? <Landing /> : <Redirect to="/dashboard" />}
+          </Route>
+          <Route path="/dashboard">
             {isAuthenticated ? (
               <Dashboard posts={posts} setPosts={setPosts} />
             ) : (
