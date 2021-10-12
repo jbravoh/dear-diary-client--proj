@@ -1,7 +1,8 @@
-import React, { useEffect } from "react";
+import { useEffect } from "react";
 import { IPost } from "../interfaces/IPost";
 import style from "../css/PostList.module.css";
 import { Link } from "react-router-dom";
+import TimeAgo from "react-timeago";
 
 interface PostListProps {
   allPosts: IPost[];
@@ -18,13 +19,14 @@ export default function PostList({
     setPosts(allPosts);
   }, [allPosts, setPosts]);
 
-  return (
-    <div>
+  const displayPosts = () => {
+    return (
       <div className={style.container}>
         {posts.map((post) => (
           <div key={post.post_id} className={style.postContainer}>
             <h1 className={style.title}> {post.title}</h1>
-            <p>{post.content} </p>
+            {post.created !== undefined && <TimeAgo date={post.created} />}
+
             <div key={post.post_id}>
               <Link
                 to={`/selected-post/${post.post_id}`}
@@ -36,6 +38,18 @@ export default function PostList({
           </div>
         ))}
       </div>
+    );
+  };
+
+  return (
+    <div>
+      {allPosts.length === 1 && allPosts[0].post_id === null ? (
+        <Link to={"/new-post"} className={style.buttonLink}>
+          <button className={style.newPostButton}>Create New Post</button>{" "}
+        </Link>
+      ) : (
+        displayPosts()
+      )}
     </div>
   );
 }
