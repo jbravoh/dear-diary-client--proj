@@ -1,5 +1,6 @@
 import style from "../css/Forms.module.css";
 import { IPost } from "../interfaces/IPost";
+import { useHistory } from "react-router-dom";
 
 interface NewPostProps {
   inputs: IPost;
@@ -11,11 +12,14 @@ export default function NewPost({
   setInputs,
 }: NewPostProps): JSX.Element {
   const { title, content } = inputs;
+  const history = useHistory();
 
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
+
     try {
       const myHeaders = new Headers();
+      history.push("/Dashboard");
 
       myHeaders.append("Content-Type", "application/json");
       myHeaders.append("token", localStorage.token);
@@ -41,7 +45,7 @@ export default function NewPost({
   return (
     <>
       <h1 className="title">Create New Post</h1>
-      <form className={style.newPostContainer} onSubmit={handleSubmit}>
+      <form className={style.newPostContainer}>
         <label className={style.label}>Title</label>
         <input
           type="text"
@@ -61,7 +65,9 @@ export default function NewPost({
             setInputs({ ...inputs, [e.target.name]: e.target.value })
           }
         />
-        <button className={style.button}>Submit</button>
+        <button className={style.button} onClick={handleSubmit}>
+          Submit
+        </button>
       </form>
     </>
   );
