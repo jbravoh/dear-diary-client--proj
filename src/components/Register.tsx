@@ -1,5 +1,5 @@
 import style from "../css/Forms.module.css";
-import React, { useState } from "react";
+import { useState } from "react";
 import { Link } from "react-router-dom";
 import { IUser } from "../interfaces/IUser";
 
@@ -17,8 +17,6 @@ export default function Register({ setAuth }: RegisterProps): JSX.Element {
   const { email, password, username } = inputs;
 
   const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    // take every input, target the input name property (e.g. "password", "username", "email")
-    // and set it to the value specified in the input
     setInputs({ ...inputs, [e.target.name]: e.target.value });
   };
 
