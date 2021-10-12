@@ -8,6 +8,7 @@
 body {
   background: #dfeeea;
   font-family: "Montserrat";
+  min-height: 100%;
 }
 
 .title {
