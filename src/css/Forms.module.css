@@ -38,6 +38,13 @@ input {
   margin-right: auto;
   border-style: none;
   cursor: pointer;
+  transition: 0.2s;
+}
+
+.button:hover {
+  width: 220px;
+  height: 55px;
+  font-size: 22px;
 }
 
 .formSentence {
