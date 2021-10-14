@@ -1,0 +1,13 @@
+.container {
+  width: 100%;
+  background: #a7c4bc;
+  height: 40px;
+}
+
+.copyright {
+  text-align: center;
+  font-size: 15px;
+  color: #2f5d62;
+  font-weight: 600;
+  padding-top: 10px;
+}
