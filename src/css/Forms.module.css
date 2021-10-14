@@ -18,7 +18,7 @@ input {
   height: 30px;
   font-size: 14px;
   padding: 0 10px;
-  border: 0.5px solid grey;
+  border: #2f5d62 1.5px solid;
   margin: 10px auto;
   border-radius: 5px;
   outline: none;
@@ -38,11 +38,24 @@ input {
   margin-right: auto;
   border-style: none;
   cursor: pointer;
+  transition: 0.2s;
+}
+
+.button:hover {
+  width: 220px;
+  height: 55px;
+  font-size: 22px;
 }
 
 .formSentence {
   text-align: center;
   margin-top: 40px;
+}
+
+.formLink {
+  text-decoration: none;
+  color: #2f5d62;
+  font-weight: 700;
 }
 
 /* ===> NewPost <==== */
@@ -56,11 +69,13 @@ input {
 
 textarea {
   width: 800px;
-  min-width: 400px;
+  min-width: 300px;
   margin: 10px auto;
-  min-height: 400px;
+  min-height: 250px;
   padding: 10px;
   font-size: 14px;
   outline: none;
   resize: none;
+  border: #2f5d62 1.5px solid;
+  border-radius: 5px;
 }

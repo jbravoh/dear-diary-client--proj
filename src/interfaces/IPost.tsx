@@ -3,4 +3,5 @@ export interface IPost {
   title: string;
   content: string;
   user_id?: number;
+  created?: string | number | Date;
 }

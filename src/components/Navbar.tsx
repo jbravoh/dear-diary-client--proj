@@ -31,11 +31,7 @@ export default function Navbar({
             </Link>
           </li>
           <li>
-            <Link
-              to="/dashboard"
-              className="nav-link"
-              onClick={(e) => logout(e)}
-            >
+            <Link to="/" className="nav-link" onClick={(e) => logout(e)}>
               Logout
             </Link>
           </li>
@@ -67,7 +63,7 @@ export default function Navbar({
     <nav className="navbar-items">
       <h1 className="navbar-logo ">
         <Link to="/dashboard" className="link">
-          Dear Diary
+          DEAR DIARY
         </Link>
       </h1>
       {isAuthenticated ? authenticatedNav() : notAuthenticatedNav()}

@@ -22,7 +22,6 @@ export default function Dashboard({
       });
 
       const parseRes = await response.json();
-      console.log(parseRes);
       setName(parseRes[0].username);
       setAllPosts(parseRes);
     } catch (error) {

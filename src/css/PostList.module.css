@@ -5,6 +5,29 @@
   grid-gap: 30px;
   justify-content: center;
 }
+
+.newPostButton {
+  border-radius: 8px;
+  font-weight: bold;
+  font-size: 20px;
+  color: white;
+  height: 50px;
+  width: 200px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  border-style: none;
+  cursor: pointer;
+  text-decoration: none;
+  background-color: #2f5d62;
+  transition: 0.2s;
+}
+
+.newPostButton:hover {
+  width: 220px;
+  height: 55px;
+  font-size: 22px;
+}
 .postContainer {
   display: flex;
   flex-direction: column;
@@ -12,18 +35,19 @@
   background: white;
   width: 400px;
   margin: 10px auto;
-  padding: 15px;
   border-radius: 10px;
   box-shadow: 0 10px 6px -6px rgb(153, 153, 153);
-  padding: 5px;
+  padding: 15px;
 }
 
 .title {
   font-size: 24px;
+  text-align: center;
+  margin-bottom: 10px;
 }
 
 .button {
-  margin: 10px auto;
+  margin: 15px auto 10px;
   border-radius: 8px;
   font-weight: bold;
   font-size: 15px;
@@ -34,6 +58,13 @@
   display: block;
   border-style: none;
   cursor: pointer;
+  transition: 0.2s;
+}
+
+.button:hover {
+  width: 85px;
+  height: 35px;
+  font-size: 18px;
 }
 
 .buttonLink {

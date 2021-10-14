@@ -14,6 +14,8 @@ import Dashboard from "./components/Dashboard";
 import SelectedPost from "./components/SelectedPost";
 import { IPost } from "./interfaces/IPost";
 import EditPost from "./components/EditPost";
+import Landing from "./components/Landing";
+import Footer from "./components/Footer";
 
 function App(): JSX.Element {
   const [isAuthenticated, setIsAuthenticated] = useState<boolean>(false);
@@ -46,55 +48,61 @@ function App(): JSX.Element {
   });
 
   return (
-    <div className="app-container">
-      <Router>
-        <Navbar setAuth={setAuth} isAuthenticated={isAuthenticated} />
-        <Switch>
-          <Route exact path="/dashboard">
-            {isAuthenticated ? (
-              <Dashboard posts={posts} setPosts={setPosts} />
-            ) : (
-              <Redirect to="/login" />
-            )}
-          </Route>
-          <Route path="/login">
-            {!isAuthenticated ? (
-              <Login setAuth={setAuth} />
-            ) : (
-              <Redirect to="/dashboard" />
-            )}
-          </Route>
-          <Route path="/register">
-            {!isAuthenticated ? (
-              <Register setAuth={setAuth} />
-            ) : (
-              <Redirect to="/dashboard" />
-            )}
-          </Route>
-          <Route path="/new-post">
-            {isAuthenticated ? (
-              <NewPost inputs={inputs} setInputs={setInputs} />
-            ) : (
-              <Redirect to="/login" />
-            )}
-          </Route>
-          <Route path="/selected-post/:postId">
-            {isAuthenticated ? (
-              <SelectedPost posts={posts} setPosts={setPosts} />
-            ) : (
-              <Redirect to="/login" />
-            )}
-          </Route>
-          <Route path="/edit-post/:postId">
-            {isAuthenticated ? (
-              <EditPost posts={posts} inputs={inputs} setInputs={setInputs} />
-            ) : (
-              <Redirect to="/login" />
-            )}
-          </Route>
-        </Switch>
-      </Router>
-    </div>
+    <>
+      <div className="content-wrap">
+        <Router>
+          <Navbar setAuth={setAuth} isAuthenticated={isAuthenticated} />
+          <Switch>
+            <Route exact path="/">
+              {!isAuthenticated ? <Landing /> : <Redirect to="/dashboard" />}
+            </Route>
+            <Route path="/dashboard">
+              {isAuthenticated ? (
+                <Dashboard posts={posts} setPosts={setPosts} />
+              ) : (
+                <Redirect to="/" />
+              )}
+            </Route>
+            <Route path="/login">
+              {!isAuthenticated ? (
+                <Login setAuth={setAuth} />
+              ) : (
+                <Redirect to="/dashboard" />
+              )}
+            </Route>
+            <Route path="/register">
+              {!isAuthenticated ? (
+                <Register setAuth={setAuth} />
+              ) : (
+                <Redirect to="/dashboard" />
+              )}
+            </Route>
+            <Route path="/new-post">
+              {isAuthenticated ? (
+                <NewPost inputs={inputs} setInputs={setInputs} />
+              ) : (
+                <Redirect to="/" />
+              )}
+            </Route>
+            <Route path="/selected-post/:postId">
+              {isAuthenticated ? (
+                <SelectedPost posts={posts} setPosts={setPosts} />
+              ) : (
+                <Redirect to="/" />
+              )}
+            </Route>
+            <Route path="/edit-post/:postId">
+              {isAuthenticated ? (
+                <EditPost posts={posts} inputs={inputs} setInputs={setInputs} />
+              ) : (
+                <Redirect to="/" />
+              )}
+            </Route>
+          </Switch>
+        </Router>
+      </div>
+      <Footer />
+    </>
   );
 }
 
