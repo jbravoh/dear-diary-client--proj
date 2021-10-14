@@ -1,8 +1,7 @@
-@import url("https://fonts.googleapis.com/css2?family=Damion&family=Montserrat:wght@400;600;700;800&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Molle:ital@1&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Gochi+Hand&family=Montserrat:wght@400;600;700;800&display=swap");
+
 * {
   margin: 0 auto;
-  /* font-family: 'Montserrat'; */
 }
 
 body {
@@ -16,4 +15,8 @@ body {
   font-size: 40px;
   color: #2f5d62;
   margin: 30px;
+}
+
+.content-wrap {
+  min-height: calc(100vh - 40px);
 }
