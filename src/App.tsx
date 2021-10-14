@@ -58,7 +58,7 @@ function App(): JSX.Element {
             {isAuthenticated ? (
               <Dashboard posts={posts} setPosts={setPosts} />
             ) : (
-              <Redirect to="/login" />
+              <Redirect to="/" />
             )}
           </Route>
           <Route path="/login">
@@ -79,21 +79,21 @@ function App(): JSX.Element {
             {isAuthenticated ? (
               <NewPost inputs={inputs} setInputs={setInputs} />
             ) : (
-              <Redirect to="/login" />
+              <Redirect to="/" />
             )}
           </Route>
           <Route path="/selected-post/:postId">
             {isAuthenticated ? (
               <SelectedPost posts={posts} setPosts={setPosts} />
             ) : (
-              <Redirect to="/login" />
+              <Redirect to="/" />
             )}
           </Route>
           <Route path="/edit-post/:postId">
             {isAuthenticated ? (
               <EditPost posts={posts} inputs={inputs} setInputs={setInputs} />
             ) : (
-              <Redirect to="/login" />
+              <Redirect to="/" />
             )}
           </Route>
         </Switch>

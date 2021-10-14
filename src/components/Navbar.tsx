@@ -31,11 +31,7 @@ export default function Navbar({
             </Link>
           </li>
           <li>
-            <Link
-              to="/dashboard"
-              className="nav-link"
-              onClick={(e) => logout(e)}
-            >
+            <Link to="/" className="nav-link" onClick={(e) => logout(e)}>
               Logout
             </Link>
           </li>

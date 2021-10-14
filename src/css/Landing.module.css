@@ -15,7 +15,8 @@
 .title {
   text-align: center;
   font-size: 60px;
-  color: #a7c4bc;
+  /* color: #a7c4bc; */
+  color: white;
 }
 
 .buttonContainer {
