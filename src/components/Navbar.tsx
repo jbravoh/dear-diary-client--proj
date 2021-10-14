@@ -63,7 +63,7 @@ export default function Navbar({
     <nav className="navbar-items">
       <h1 className="navbar-logo ">
         <Link to="/dashboard" className="link">
-          Dear Diary
+          DEAR DIARY
         </Link>
       </h1>
       {isAuthenticated ? authenticatedNav() : notAuthenticatedNav()}
